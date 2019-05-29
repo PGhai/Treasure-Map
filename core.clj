@@ -20,11 +20,7 @@
   r
   )
 
-(def sol(to-array-2d []))
 
-(def temp-arr(read-from-file))
-(def temp-data (mapv #(clojure.string/split % #"") temp-arr))
-(def sol (to-array-2d temp-data))
 
 
 (defn solvePathUtil
@@ -52,22 +48,18 @@
      )
    
    )
-  ret
+  0
   )
 
 (defn strlen-exceeds? [s n]
   (> (count s) n))
+
+
 (defn find-path
-  [treasureMap row col]
+  [treasureMap row col sol]
   (if(= (solvePathUtil treasureMap 0 0 sol row col) 0)
     (printSol sol)
     )
-  
-;   
-;  (if(= (solvePathUtil(treasureMap 0 0 sol)) "0")
-;      (println("Solution doesn't exist"))
-;   )
-
   )
 
 (defn read-from-file []
@@ -83,15 +75,13 @@
 	(def arr(read-from-file))
 	(def data (mapv #(clojure.string/split % #"") arr))
 	(def treasureMap (to-array-2d data))
+  (def sol (to-array-2d data))
   (def row (alength treasureMap))
   (def col (alength (aget treasureMap 0)))
-	(find-path treasureMap row col)
+	(find-path treasureMap row col sol)
 
-;  (println (col treasureMap))
+
 	nil
 )
-
-
-  
 
 (-main[])
